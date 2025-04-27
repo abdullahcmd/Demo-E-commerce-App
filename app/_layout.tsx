@@ -5,6 +5,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
+import { CartProvider } from './(tabs)/Cartcontext';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 
@@ -28,12 +29,15 @@ export default function RootLayout() {
   }
 
   return (
+    <CartProvider>  
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
+        <Stack.Screen name="product/[id]" options={{ headerShown: false }} />
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>
+    </CartProvider>
   );
 }
