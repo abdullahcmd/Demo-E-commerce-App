@@ -3,7 +3,7 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 const{height,width}=Dimensions.get('window')
-const TransBlock = ({ iconName }) => {
+const TransBlock = ({ iconName, onPress }) => {
   return (
   
     <LinearGradient
@@ -12,7 +12,7 @@ const TransBlock = ({ iconName }) => {
       end={{ x: 1, y: 0 }}
       style={styles.gradient}
     >
-  <TouchableOpacity>
+  <TouchableOpacity onPress={onPress}>
       <MaterialCommunityIcons
         name={iconName}
         size={28}

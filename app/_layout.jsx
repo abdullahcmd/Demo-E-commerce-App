@@ -23,6 +23,8 @@ export default function RootLayout() {
     <CartProvider>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
         <Stack initialRouteName="login" screenOptions={{ headerShown: false }}>
+       
+          
           <Stack.Screen name="login" />
           <Stack.Screen name="signup" />
           <Stack.Screen name="(tabs)" />
