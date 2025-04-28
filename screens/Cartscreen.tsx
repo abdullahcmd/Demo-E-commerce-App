@@ -38,7 +38,10 @@ const CartScreen = () => {
                     </TouchableOpacity>
                   </View>
 
-                  <Button title="Remove" onPress={() => removeFromCart(item.id)} />
+                  <TouchableOpacity onPress={() => removeFromCart(item.id)} style={styles.mainButton} >
+                      <Text >Remove</Text>
+                    </TouchableOpacity>
+                 
                 </View>
               </View>
             )}
@@ -48,12 +51,16 @@ const CartScreen = () => {
             <Text style={styles.totalText}>Total: ${calculateTotal()}</Text>
           </View>
           <View style={styles.totalContainer}>
-          <Button title="Check-Out" onPress={() => Alert.alert("Chekout!!!",
+          <TouchableOpacity onPress={() => {Alert.alert("Chekout!!!",
 
 `Thank you for shopping with us,
 
-Your total is: $${calculateTotal()}`)} 
-/>  
+Your total is: $${calculateTotal()}`)
+
+
+}}  style={styles.mainButton} >
+                      <Text >Checkout</Text>
+                    </TouchableOpacity>
           </View>
         </>
       )}
@@ -111,7 +118,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   qtyButton: {
-    backgroundColor: 'gray',
+    backgroundColor: 'grey',
     paddingHorizontal: 10,
     paddingVertical: 5,
     borderRadius: 5,
@@ -133,7 +140,14 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: 'bold',
     color: 'black',
-  },
+  },mainButton:{
+    width:'70%',
+    borderWidth:1,
+    padding:10,
+    alignItems:'center',
+    borderRadius:7,
+    borderColor:'black'
+  }
 });
 
 export default CartScreen;

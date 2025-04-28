@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
-import  { colors }  from '../constants/color';
 
 
 const ProfileScreen = () => {
@@ -31,7 +30,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
-    backgroundColor: colors.a,
+   // backgroundColor: colors.a,
   },
   avatar: {
     width: 120,
@@ -43,31 +42,31 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: 'bold',
     marginBottom: 5,
-    color:colors.d
+    color:'black'
   },
   email: {
     fontSize: 16,
     marginBottom: 20,
-    color:colors.d
+    color:'black'
   },
   infoContainer: {
     width: '100%',
     marginBottom: 15,
     padding: 10,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: 'grey',
     borderRadius: 10,
-    color:colors.d
+  
   },
   infoTitle: {
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 5,
-    color:colors.d
+     color:'black'
   },
   infoText: {
     fontSize: 16,
-    color:colors.d
+     color:'black'
   },
 });
 

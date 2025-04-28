@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'expo-router';
 import  { colors }  from '../constants/color';
 
-const { width, height } = Dimensions.get('screen');
+const { width, height } = Dimensions.get('window');
 
 const images = [
   require('../assets/images/img1 (6).png'),
@@ -128,7 +128,7 @@ export default function HomeScreen() {
                   <Image source={{ uri: product.image }} style={styles.itemimg} />
                   <View style={styles.itemtxt}>
                     <Text numberOfLines={2} style={[styles.itemtxt,{ textAlign: 'center' }]}>{product.title}</Text>
-                    <Text style={[styles.itemtxt, {fontWeight: 'bold' }]}>$ {product.price}</Text>
+                    <Text style={[styles.itemtxt, {fontWeight: 'bold',marginTop:height*0.02 }]}>$ {product.price}</Text>
                   </View>
                 </View>
               </TouchableOpacity>
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     top: 40,
     width: width,
     height: height,
-    backgroundColor: colors.a,
+    backgroundColor: 'white',
     alignItems: 'flex-start',
     bottom:50
   },
@@ -159,15 +159,17 @@ const styles = StyleSheet.create({
     padding:10,
     width: width,
     height: 60,
-    backgroundColor: colors.b,
+    borderColor:'black',
+    borderWidth:1,
+   // backgroundColor: '#f2f7f4',
     justifyContent: 'center',
   },
   categoryview: {
-    backgroundColor: colors.c,
+    backgroundColor: '#edf0ee',
     paddingHorizontal: 15,
     paddingVertical: 10,
     marginHorizontal: 5,
-    borderRadius: 20,
+    borderRadius: 12,
     borderColor: "black",
     borderWidth: 1,
   },
@@ -199,6 +201,6 @@ const styles = StyleSheet.create({
   itemtxt: {
     justifyContent: 'center',
     alignItems: 'center',
-    color:colors.d
+    color:'black'
   },
 });

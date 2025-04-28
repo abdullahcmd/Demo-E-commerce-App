@@ -1,8 +1,9 @@
-import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, Alert } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity,Dimensions, ScrollView, Alert } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useState } from 'react';
 import { useCart } from '@/app/(tabs)/Cartcontext';
-
+import { AntDesign } from '@expo/vector-icons';
+const { width, height } = Dimensions.get('screen');
 
 export default function ProductDetailScreen() {
   const { id, title, price, image, description, category, rate } = useLocalSearchParams();
@@ -26,19 +27,19 @@ export default function ProductDetailScreen() {
 
   return (
     <View style={styles.screen}>
+      
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
       <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
-        <Text style={styles.backButtonText}>Back</Text>
+       <AntDesign name='arrowleft' size={24}/>
       </TouchableOpacity>
 
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <View style={styles.detail}>
-          <Text style={styles.detailtxt}>Detail page</Text>
-        </View>
 
         <Image source={{ uri: image }} style={styles.image} />
         <Text style={styles.title}>{title}</Text>
-        <Text style={styles.price}>💲{price}</Text>
+        <Text style={styles.price}>$ {price}</Text>
         <Text style={styles.category}>{"\n"}Category: {category}</Text>
+        <Text style={styles.descriptionHeading}>{"\n"}Description :</Text>
+
         <Text style={styles.description}>{"\n"}{description}</Text>
         <Text style={styles.rate}>⭐{rate}</Text>
         <TouchableOpacity style={styles.addToCartButton} onPress={handleAddToCart}>
@@ -51,14 +52,14 @@ export default function ProductDetailScreen() {
 
 const styles = StyleSheet.create({
   addToCartButton: {
-    marginTop: 20,
-    backgroundColor: 'green',
+    marginTop: height*0.09,
+    backgroundColor: '#edf0ee',
     paddingVertical: 15,
     paddingHorizontal: 40,
     borderRadius: 10,
   },
   addToCartText: {
-    color: 'white',
+    color: 'black',
     fontSize: 18,
     fontWeight: 'bold',
   },
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
     left: 20,
     zIndex: 1,
     padding: 10,
-    backgroundColor: 'gray',
+   // backgroundColor: 'gray',
     borderRadius: 5,
   },
   backButtonText: {
@@ -86,9 +87,8 @@ const styles = StyleSheet.create({
   },
   detail: {
     width: '80%',
-    height: 100,
+  //  height: 100,
     marginBottom: 20,
-    backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 20,
@@ -106,27 +106,55 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    textAlign: 'center',
+    padding:13,
+    textAlign: 'left',
   },
   price: {
     fontSize: 20,
-    color: 'green',
+    color: 'black',
+    borderWidth:1,
+    borderRadius:10,
+    padding:10,
+    textAlign:'center',
+    fontWeight: 'bold',
     marginTop: 10,
   },
   category: {
     fontSize: 18,
     color: 'black',
+    textAlign:'left',
+    fontWeight:'bold',
+    paddingLeft:30,
+    width:'100%',
     marginTop: 10,
   },
   description: {
     fontSize: 16,
     color: 'black',
-    textAlign: 'center',
+   
+    paddingHorizontal:30,
+    textAlign: 'left',
     marginTop: 10,
+  },descriptionHeading:{
+    textAlign:'left',
+    fontSize:20,
+    borderColor:'black',
+    
+    marginTop:20,
+    borderTopWidth:1,
+    width:'100%',
+    paddingLeft:30,
+    fontWeight:'700',
+
   },
   rate: {
     fontSize: 20,
+    textAlign:'left',
+    width:'100%',
+    //borderWidth:1,
     color: 'black',
-    marginTop: 10,
+    marginTop: height*0.05,
+    paddingHorizontal:30,
   },
+
 });
